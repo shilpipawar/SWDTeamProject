@@ -21,7 +21,7 @@ In this activity we will protect our repo's master branch.
   ![Protect Branch](Images/01-Protect.png)
 
 * If completed successfully, no one should be able to push directly to the master branch. Instead, all changes must be made in the form of pull requests that are to be reviewed by another group member.
-
+## Add Some Details
 ### Hints
 
 * Ask an instructor or TA for assistance if you get stuck!
