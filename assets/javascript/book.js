@@ -47,7 +47,7 @@ $(document).ready(function () {
 
     ///Reading Stored Data from DB///////////////////////////////////////////
     // Firebase watcher .on("child_added"
-    database.ref().on("child_added", function (snapshot) {
+    database.ref("/users").on("child_added", function (snapshot) {
         // storing the snapshot.val() in a variable for convenience
         var sv = snapshot.val();
 
@@ -71,7 +71,7 @@ loginid = $("#uname-input").val().trim();
 loginpassword = $("#upsw-input").val().trim();
         
 //Reading Login Data from DB
-        database.ref().on('value', function (snapshot) {
+        database.ref("/users").on('value', function (snapshot) {
             snapshot.forEach(function (childSnapshot) {
                 var childData = childSnapshot.val();
             
