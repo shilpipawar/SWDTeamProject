@@ -70,6 +70,8 @@ $(document).ready(function () {
 loginid = $("#uname-input").val().trim();
 loginpassword = $("#upsw-input").val().trim();
         
+var signIn = false;
+
 //Reading Login Data from DB
         database.ref("/users").on('value', function (snapshot) {
             snapshot.forEach(function (childSnapshot) {
@@ -79,7 +81,12 @@ loginpassword = $("#upsw-input").val().trim();
                 if(loginid == childData.UserName)
                 {
                     if(loginpassword == childData.Password){
-                        alert("found Match redirect to Shelf member site");
+                         signIn = true;
+                         $("#log-in").hide();
+                         $("#log-in").text("Log Out");
+                        
+                        
+
                         // break;
                     }
                 }else{
