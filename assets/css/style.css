@@ -1,6 +1,5 @@
-<<<<<<< HEAD
 body{
-    background-clip: url(..assets/images/giffy.gif);
+    background-color: darkcyan;
 }
 
 .w-100 {
@@ -39,11 +38,6 @@ body{
     padding-top: 15px;
 
 }
-=======
-/* Style.css */
-
-body {font-family: Arial, Helvetica, sans-serif;}
->>>>>>> 0aa1365b6899462c47e98bb7aee298ef565bc348
 
 /* Full-width input fields */
 input[type=text], input[type=password] {
@@ -97,14 +91,11 @@ span.psw {
     float: right;
     padding-top: 16px;
 }
-<<<<<<< HEAD
 footer {
     text-align: center;
     color: darkcyan;
     background-color: darkgrey;
 }
-=======
->>>>>>> 0aa1365b6899462c47e98bb7aee298ef565bc348
 
 /* The Modal (background) */
 .modal {
@@ -123,11 +114,7 @@ footer {
 
 /* Modal Content/Box */
 .modal-content {
-<<<<<<< HEAD
     background-color: #343a40;
-=======
-    background-color: #fefefe;
->>>>>>> 0aa1365b6899462c47e98bb7aee298ef565bc348
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
@@ -138,11 +125,7 @@ footer {
     position: absolute;
     right: 25px;
     top: 0;
-<<<<<<< HEAD
     color: red;
-=======
-    color: #000;
->>>>>>> 0aa1365b6899462c47e98bb7aee298ef565bc348
     font-size: 35px;
     font-weight: bold;
 }
@@ -152,15 +135,12 @@ footer {
     color: red;
     cursor: pointer;
 }
-<<<<<<< HEAD
 b {
     color: white;
 }
 .remember-me {
     color: white;
 }
-=======
->>>>>>> 0aa1365b6899462c47e98bb7aee298ef565bc348
 
 /* Add Zoom Animation */
 .animate {
@@ -187,12 +167,5 @@ b {
     .cancelbtn {
        width: 100%;
     }
-<<<<<<< HEAD
 }
 
-.login-button {
-    color: white;
-}
-=======
-}
->>>>>>> 0aa1365b6899462c47e98bb7aee298ef565bc348
