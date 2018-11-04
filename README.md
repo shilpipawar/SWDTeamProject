@@ -25,3 +25,4 @@ In this activity we will protect our repo's master branch.
 ### Hints
 
 * Ask an instructor or TA for assistance if you get stuck!
+* Testing my new branch
