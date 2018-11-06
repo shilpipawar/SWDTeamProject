@@ -169,3 +169,12 @@ b {
     }
 }
 
+.maybe {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: black;
+}
+.carousel.item {
+    background-color: black;
+}
