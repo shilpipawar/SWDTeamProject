@@ -21,10 +21,6 @@ $(document).ready(function () {
     var loginid;
     var loginpassword;
     var timesimageArr = [];
-<<<<<<< HEAD
-    
-=======
->>>>>>> Times API
 
     ////On Click Submit Button//////////////////////////////////////////////
     $("#sign-on").on("click", function (event) {
