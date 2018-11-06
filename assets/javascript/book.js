@@ -69,8 +69,6 @@ $(document).ready(function () {
         //Performing match
 loginid = $("#uname-input").val().trim();
 loginpassword = $("#upsw-input").val().trim();
-        
-var signIn = false;
 
 //Reading Login Data from DB
         database.ref("/users").on('value', function (snapshot) {
@@ -81,12 +79,7 @@ var signIn = false;
                 if(loginid == childData.UserName)
                 {
                     if(loginpassword == childData.Password){
-                         signIn = true;
-                         $("#log-in").hide();
-                         $("#log-in").text("Log Out");
-                        
-                        
-
+                    
                         // break;
                     }
                 }else{
