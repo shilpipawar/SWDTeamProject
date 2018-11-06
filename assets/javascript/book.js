@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
     // Initialize Firebase/////////////////////////////////////////
     var config = {
@@ -96,38 +97,100 @@ loginpassword = $("#upsw-input").val().trim();
 
 
     });////On Click SignIn Ends
+    //Denise-branch start here
+
+$("#searchButton").on("click", function(event) {
+
+    event.preventDefault();
+    console.log("text");
+    var getSearch = $("#formId").val().trim();
+
+    console.log("Search String" + getSearch);
+    
+    //var bookName = "The Notebook";
+    //var apikey= "AIzaSyARl6WereIzo_hkzX98ao7MV1SgzfLpYno"
+    var queryUrl = "https://www.googleapis.com/books/v1/volumes?q=" + getSearch;
+        console.log(queryUrl);
+     $.ajax({
+            url: queryUrl,
+            method: "GET"
+        }).done(function (response) {
+            console.log(response);
+            for (var i = 0; i < response.items.length; i++) {
+                
+                
+                var bookTitle = response.items[i].volumeInfo.title;
+                var bookAuthor= response.items[i].volumeInfo.authors;  
+                var bookImage = response.items[i].volumeInfo.imageLinks.smallThumbnail;
+                var bookBuy = response.items[i].saleInfo.buyLink;
+    
+                console.log(bookTitle);
+                console.log(bookAuthor);
+                console.log(bookImage);
+                console.log(bookBuy);
+                printOut();
+            };
+                //make for loop for authors after variables 
+    
+    
+                function printOut() {
+                    
+                        // $("#tBody").empty();
+                        var tRow = $("<tr>");
+                        var title = $("<td>").text(bookTitle);
+                        var author =   $("<td>").text(bookAuthor);
+                        var image = $("<td> <img src='" + bookImage + "'></td>");
+                        var buy;
+                        
+                            if (bookBuy != undefined) { buy = $("<td> <button href='" + bookBuy + "'>Buy</button></td>");
+                        } else {buy = $("<td></td>");};
+                          
+                        tRow
+                          .append(title)
+                          .append(author)
+                          .append(image)
+                          .append(buy)
+                          $("#tBody").append(tRow);
+    
+                    
+                }
+            
+                // printOut();
+                
+        });
+    });///search ends here
 
     //Adding API For Newyork Times best sallers
    //Creating URL - Ajex call to get cover pictures
-   function CreateQUeryURLTimes(){
-    var apiKey = "b7dc6a76033341b184c4c50f44c13cca"
-    var url = "https://api.nytimes.com/svc/books/v3/lists/overview.json?api-key=" + apiKey;
-    return url;
-}
+//    function CreateQUeryURLTimes(){
+//     var apiKey = "b7dc6a76033341b184c4c50f44c13cca"
+//     var url = "https://api.nytimes.com/svc/books/v3/lists/overview.json?api-key=" + apiKey;
+//     return url;
+// }
 
-function NewyorkBookSaller(bookcover) {
-    var queryURL = CreateQUeryURLTimes();
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    }).done(function (response) {
-        var result = response.results;
-        console.log(result);
-        var img
-        for (var i = 0; i < result.lists.length; i++) {
-            timesimageArr[i] = result.lists[i].list_image;
+// function NewyorkBookSaller(bookcover) {
+//     var queryURL = CreateQUeryURLTimes();
+//     $.ajax({
+//         url: queryURL,
+//         method: "GET"
+//     }).done(function (response) {
+//         var result = response.results;
+//         console.log(result);
+//         var img
+//         for (var i = 0; i < result.lists.length; i++) {
+//             timesimageArr[i] = result.lists[i].list_image;
 
-            console.log(timesimageArr[i]);
+//             console.log(timesimageArr[i]);
 
-        }
+//         }
         
-    }).fail(function() {
-        console.log("error");
-        $('.results').html('This feature is not working. :-(');
-    });
-};
+//     }).fail(function() {
+//         console.log("error");
+//         $('.results').html('This feature is not working. :-(');
+//     });
+// };
 
-NewyorkBookSaller();
+// NewyorkBookSaller();
 
 })
 
