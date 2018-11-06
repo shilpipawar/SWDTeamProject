@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
     // Initialize Firebase/////////////////////////////////////////
     var config = {
@@ -94,81 +95,62 @@ loginpassword = $("#upsw-input").val().trim();
 
 
     });////On Click SignIn Ends
-//Denise-branch start here
+    //Denise-branch start here
 
+$("#searchButton").on("click", function(event) {
 
-var bookName = "The Notebook";
-//var apikey= "AIzaSyARl6WereIzo_hkzX98ao7MV1SgzfLpYno"
-var queryUrl = "https://www.googleapis.com/books/v1/volumes?q=" + bookName;
-    console.log(queryUrl);
- $.ajax({
-        url: queryUrl,
-        method: "GET"
-    }).done(function (response) {
-        console.log(response);
-            var bookTitle = response.items[0].volumeInfo.title;
-            var bookAuthor= response.items[0].volumeInfo.authors;  
-            var bookImage = response.items[0].volumeInfo.imageLinks.smallThumbnail;
-            var bookBuy = response.items[0].saleInfo.buyLink;
+    event.preventDefault();
+    console.log("text");
+    var getSearch = $("#formId").val().trim();
 
-            console.log(bookTitle);
-            console.log(bookAuthor);
-            console.log(bookImage);
-            console.log(bookBuy);
-
-            //make for loop for authors after variables 
+    console.log("Search String" + getSearch);
+    
+    //var bookName = "The Notebook";
+    //var apikey= "AIzaSyARl6WereIzo_hkzX98ao7MV1SgzfLpYno"
+    var queryUrl = "https://www.googleapis.com/books/v1/volumes?q=" + getSearch;
+        console.log(queryUrl);
+     $.ajax({
+            url: queryUrl,
+            method: "GET"
+        }).done(function (response) {
+            console.log(response);
+                var bookTitle = response.items[0].volumeInfo.title;
+                var bookAuthor= response.items[0].volumeInfo.authors;  
+                var bookImage = response.items[0].volumeInfo.imageLinks.smallThumbnail;
+                var bookBuy = response.items[0].saleInfo.buyLink;
+    
+                console.log(bookTitle);
+                console.log(bookAuthor);
+                console.log(bookImage);
+                console.log(bookBuy);
+    
+                //make for loop for authors after variables 
+    
+    
+                function printOut() {
+                    $(response.items).each(function(index, value){
+                        $("#tBody").empty();
+                        var tRow = $("<tr>");
+                         var title = $("<td>").text(bookTitle);
+                        var author =   $("<td>").text(bookAuthor);
+                        var image = $("<td> <img src='" + bookImage + "'></td>");
+                        var buy = $("<td> <button src='" + bookBuy + "'>Buy</button></td>");
+    
+                          tRow
+                          .append(title)
+                          .append(author)
+                          .append(image)
+                          .append(buy)
+                          $("#tBody").append(tRow);
+    
+                    });
+                }
             
-    });
-})
+                printOut();
+                
+        });
+    });///search ends here
 
-
-
-
-
-
-
-
-
-
-    // var getBooksApi = $(this).text();
-    // var queryUrl = "https://www.googleapis.com/books/v1/volumes?q=" + getBooksApi + "&api_key=AIzaSyARl6WereIzo_hkzX98ao7MV1SgzfLpYno";
-    //     //console.log(queryUrl);
- 
-    // $.ajax({
-    //     url: queryUrl,
-    //     method: "GET"
-    // }).done(function (response) {
-    //     console.log(response.items[0].volumeInfo);
-    //         var bookTitle = response.items[i].volumeInfo.title;
-    //         var bookAuthor= response.items[i].volumeInfo.authors[i];
-    //         var bookImage = response.items[i].imageLinks.smallThumbnail.url;
-    //         var bookBuy = response.items[i].buyLink.url
-
-           
-           
-           
-    //        $("#postImages").attr("data-still", stillImg);
-    //         $("#postImages").attr("data-animate", animateImg);
-    //         $("#postImages").attr("data-state", "still");
-
-    //     $("#postImages").prepend("<img src='" +stillImg+ "'>");
-    //     $("#postImages").prepend("<p> Rating: " +ratingImg + "</p>");
-    //     //$("#postImages").prepend("<img src='" +animateImg+ "'>");
-    //     };
-
-    //     $("img").on("click", function() {
-    //         var isState = $(this).attr("data-state");
-    //         if (isState === "still") {
-    //             $(this).attr("data-animate", $(this).data("animate"));
-    //             $(this).attr("data-state", "animate");
-    //         };
-    //         if (isState !== "still") {
-    //             $(this).attr("data-still", $(this).data("still"));
-    //             $(this).attr("data-state", "still");
-    //         };
-    //     })
-
-    // });
-
+});
 
 
