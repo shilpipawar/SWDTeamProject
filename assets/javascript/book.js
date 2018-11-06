@@ -20,6 +20,8 @@ $(document).ready(function () {
     var copySnapshot;
     var loginid;
     var loginpassword;
+    var timesimageArr = [];
+    
 
     ////On Click Submit Button//////////////////////////////////////////////
     $("#sign-on").on("click", function (event) {
@@ -94,6 +96,38 @@ loginpassword = $("#upsw-input").val().trim();
 
 
     });////On Click SignIn Ends
+
+    //Adding API For Newyork Times best sallers
+   //Creating URL - Ajex call to get cover pictures
+   function CreateQUeryURLTimes(){
+    var apiKey = "b7dc6a76033341b184c4c50f44c13cca"
+    var url = "https://api.nytimes.com/svc/books/v3/lists/overview.json?api-key=" + apiKey;
+    return url;
+}
+
+function NewyorkBookSaller(bookcover) {
+    var queryURL = CreateQUeryURLTimes();
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).done(function (response) {
+        var result = response.results;
+        console.log(result);
+        var img
+        for (var i = 0; i < result.lists.length; i++) {
+            timesimageArr[i] = result.lists[i].list_image;
+
+            console.log(timesimageArr[i]);
+
+        }
+        
+    }).fail(function() {
+        console.log("error");
+        $('.results').html('This feature is not working. :-(');
+    });
+};
+
+NewyorkBookSaller();
 
 })
 
