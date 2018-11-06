@@ -114,39 +114,46 @@ $("#searchButton").on("click", function(event) {
             method: "GET"
         }).done(function (response) {
             console.log(response);
-                var bookTitle = response.items[0].volumeInfo.title;
-                var bookAuthor= response.items[0].volumeInfo.authors;  
-                var bookImage = response.items[0].volumeInfo.imageLinks.smallThumbnail;
-                var bookBuy = response.items[0].saleInfo.buyLink;
+            for (var i = 0; i < response.items.length; i++) {
+                
+                
+                var bookTitle = response.items[i].volumeInfo.title;
+                var bookAuthor= response.items[i].volumeInfo.authors;  
+                var bookImage = response.items[i].volumeInfo.imageLinks.smallThumbnail;
+                var bookBuy = response.items[i].saleInfo.buyLink;
     
                 console.log(bookTitle);
                 console.log(bookAuthor);
                 console.log(bookImage);
                 console.log(bookBuy);
-    
+                printOut();
+            };
                 //make for loop for authors after variables 
     
     
                 function printOut() {
-                    $(response.items).each(function(index, value){
-                        $("#tBody").empty();
+                    
+                        // $("#tBody").empty();
                         var tRow = $("<tr>");
-                         var title = $("<td>").text(bookTitle);
+                        var title = $("<td>").text(bookTitle);
                         var author =   $("<td>").text(bookAuthor);
                         var image = $("<td> <img src='" + bookImage + "'></td>");
-                        var buy = $("<td> <button src='" + bookBuy + "'>Buy</button></td>");
-    
-                          tRow
+                        var buy;
+                        
+                            if (bookBuy != undefined) { buy = $("<td> <button href='" + bookBuy + "'>Buy</button></td>");
+                        } else {buy = $("<td></td>");};
+                          
+                        tRow
                           .append(title)
                           .append(author)
                           .append(image)
                           .append(buy)
                           $("#tBody").append(tRow);
     
-                    });
+                    
                 }
             
-                printOut();
+                // printOut();
                 
         });
     });///search ends here
