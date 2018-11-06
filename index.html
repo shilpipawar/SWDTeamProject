@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
@@ -19,7 +20,10 @@
 
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
-    <script src="assets/javascript/book.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/5.5.6/firebase.js"></script>
+
+    <script src="assets/javascript/book.js" type="text/javascript"> </script>
 
     <title>The Shelf</title>
 </head>
@@ -27,41 +31,46 @@
 <body>
     <!-- Nav Bar  -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">The Shelf.</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-          
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav mr-auto">
+        <a class="navbar-brand" href="#">The Shelf.</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     <!-- login button -->
-                    <a class="nav-link" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Sign In <span class="sr-only">(current)</span></a>
+                    <a id="log-in" class="nav-link" onclick="document.getElementById('id01').style.display='block'"
+                        style="width:auto;">Sign In <span class="sr-only">(current)</span></a>
                 </li>
+                <!-- Sign up button -->
                 <li class="nav-item active">
-                        <a class="nav-link" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Sign Up<span class="sr-only">(current)</span></a>
+                    <a id="log-on" class="nav-link" onclick="document.getElementById('id02').style.display='block'"
+                        style="width:auto;">Sign Up<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Dropdown
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Google Books</a>
-                    <a class="dropdown-item" href="#">Amazon Books</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">View Your List</a>
-                  </div>
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Dropdown
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Google Books</a>
+                        <a class="dropdown-item" href="#">Amazon Books</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">View Your List</a>
+                    </div>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link disabled" href="#"></a>
+                    <a class="nav-link disabled" href="#"></a>
                 </li>
-              </ul>
-              <form class="form-inline my-2 my-lg-0">
-                <input  id="formId" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input id="formId" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <span><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button></span>
-              </form>
-            </div>
-          </nav>
+            </form>
+        </div>
+    </nav>
 
     <!-- Carousel -->
     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
@@ -96,7 +105,7 @@
                 <th scope="col">Google $</th>
                 <th scope="col">Amazon $</th>
                 <th scope="col">Select</th>
-                
+
             </tr>
         </thead>
         <tbody>
@@ -131,24 +140,56 @@
         </tbody>
         <td id="selectBtn"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add to list</button></td>
     </table>
-    <div id="id01" class="modal">
-        <!-- LOGIN  -->
+
+    <!--Sign-Up -->
+    <div id="id02" class="modal">
         <form class="modal-content animate" action="/action_page.php">
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <img src="assets/images/bookworm-512.png" alt="Avatar" class="avatar">
+            </div>
+
+            <div class="container">
+                <label for="name-input"><b>Username</b></label>
+                <input id="name-input" type="text" placeholder="Enter Username" name="uname" required>
+
+                <label for="psw-input"><b>Password</b></label>
+                <input id="psw-input" type="password" placeholder="Enter Password" name="psw" required>
+
+                <label for="confpsw-input"><b>Confirm Password</b></label>
+                <input id="confpsw-input" type="password" placeholder="Confirm Password" name="psw" required>
+
+                <button id="sign-on" type="submit">Sign Up</button>
+                <label>
+                    <input class="remember-me" type="checkbox" checked="checked" name="remember"> Remember me
+                </label>
+            </div>
+
+            <div class="container" style="background-color:#f1f1f1">
+                <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+                <span class="psw">Forgot <a href="#">password?</a></span>
+            </div>
+        </form>
+    </div>
+
+    <!-- login -->
+    <div id="id01" class="modal">
+        <form class="modal-content animate">
             <div class="imgcontainer">
                 <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
                 <img src="assets/images/bookworm-512.png" alt="Avatar" class="avatar">
             </div>
 
             <div class="container">
-                <label for="uname"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="uname" required>
+                <label for="name-input"><b>Username</b></label>
+                <input id="name-input" type="text" placeholder="Enter Username" name="uname" required>
 
-                <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" required>
+                <label for="psw-input"><b>Password</b></label>
+                <input id="psw-input" type="password" placeholder="Enter Password" name="psw" required>
 
-                <button type="submit">Login</button>
+                <button id="sign-on" type="submit">Login</button>
                 <label>
-                    <input  class="remember-me" type="checkbox" checked="checked" name="remember"> Remember me
+                    <input class="remember-me" type="checkbox" checked="checked" name="remember"> Remember me
                 </label>
             </div>
 
