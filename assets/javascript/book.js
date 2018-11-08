@@ -118,7 +118,7 @@ function NewyorkBookSaller(bookcover) {
             timesimageArr[i] = result.lists[i].list_image;
             $('.carousel-inner').append('<div class="maybe"> </div>');
 
-            $('.maybe').append($('<div class="carousel-item item "><img class="d-block w-50 img-fluid" src='  + result.lists[i].list_image + '></div>'));
+            $('.maybe').append($('<div class="carousel-item item "><img class="d-block w-100 img-fluid" src='  + result.lists[i].list_image + '></div>'));
             console.log(timesimageArr[i]);
 
         }
@@ -132,8 +132,4 @@ function NewyorkBookSaller(bookcover) {
 NewyorkBookSaller();
 
 })
-
-
-
-
 

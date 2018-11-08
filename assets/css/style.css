@@ -21,13 +21,29 @@ body{
 }
 .dropdown-item {
     color: white;
+
 }
 
+.dropdown-item1 {
+    color: white!important;
+    padding-left: 23px;
+}
+
+
+h1 {
+    text-align: center;
+    font-family: fantasy;
+    font-weight: bold;
+    margin-top: 25px;
+
+
+}
 .table {
     margin-right: 100px;
     width: 1000px;
     margin:0 auto 0 auto;
     margin-bottom: 35px;
+    margin-bottom: 90px;
     
 }
 
@@ -176,5 +192,20 @@ b {
     background-color: black;
 }
 .carousel.item {
+    background-color: black;
+    position: center;
+}
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    background-color: #343a40;
+    
+}
+
+.carousel-inner {
     background-color: black;
 }
