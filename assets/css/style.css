@@ -79,12 +79,12 @@ button:hover {
 }
 
 img.avatar {
-    width: 40%;
-    border-radius: 50%;
+    width: 20%;
+    border-radius: 25%;
 }
 
 .container {
-    padding: 16px;
+    padding: 10px;
 }
 
 span.psw {
