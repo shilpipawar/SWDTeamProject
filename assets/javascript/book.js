@@ -10,7 +10,7 @@ $(document).ready(function () {
         messagingSenderId: "446597298610"
     };
     firebase.initializeApp(config);
-    //   Initialization Done ////////////////////////////////////////////////
+    //////////Initialization Done /////////////////////////////////////////
 
     // Create a variable to reference the database.///////////////////////
     var database = firebase.database();
@@ -23,8 +23,6 @@ $(document).ready(function () {
     var loginpassword;
     var timesimageArr = [];
     var isValidated = false;
-
-
     ////On Click Submit Button//////////////////////////////////////////////
     $("#sign-on").on("click", function (event) {
         event.preventDefault();
@@ -64,21 +62,6 @@ $(document).ready(function () {
             $("#lblmessage").text("SignUp Fail..UserId should contain only character and number, UserID should be a valid e-mail id....");
         }//User id validation
     });////On Click SignUp Ends
-
-    ///Reading Stored Data from DB///////////////////////////////////////////
-    // Firebase watcher .on("child_added"
-    // database.ref("/users").on("child_added", function (snapshot) {
-    //     // storing the snapshot.val() in a variable for convenience
-    //     var sv = snapshot.val();
-    //     // Console.loging the last user's data
-    //     console.log(sv.UserName);
-    //     console.log(sv.Password);
-    //     // Change the HTML to reflect
-    //     // Handle the errors
-    // }, function (errorObject) {
-    //     console.log("Errors handled: " + errorObject.code);
-    // });
-
     ////////////SignIn////Method///////////////////////////////////////////////
     $("#sign-in").on("click", function (event) {
         event.preventDefault();
@@ -201,8 +184,6 @@ $(document).ready(function () {
                 printOut();
             };
             //make for loop for authors after variables 
-
-
             function printOut() {
 
                 // $("#tBody").empty();
@@ -220,7 +201,6 @@ $(document).ready(function () {
                 } else {
                     buy = $("<td></td>");
                 };
-
                 tRow
                     .append(title)
                     .append(author)
@@ -228,12 +208,10 @@ $(document).ready(function () {
                     .append(buy)
                 $("#tBody").append(tRow);
             }
-
             // printOut();
-
         });
     });///search ends her
-    ////////////////////
+
     //NewYork Best Book Salers API to get book cover images for carasole//
     NewyorkBookSaller();
 
