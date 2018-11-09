@@ -109,38 +109,10 @@
             </tr>
         </thead>
         <tbody id="tBody">
-            <tr>
-                <th scope="row">1</th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
+           
         </tbody>
         <td id="selectBtn"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add to list</button></td>
     </table>
-
     <!--Sign-Up -->
     <div id="id02" class="modal">
         <form class="modal-content animate" action="/action_page.php">
@@ -154,7 +126,7 @@
                 <input id="name-input" type="text" placeholder="Enter Username" name="name" required minlength="4" maxlength="12" size="15">
 
                 <label for="psw-input"><b>Password</b></label>
-                <input id="psw-input" type="password" placeholder="Enter Password" name="psw" required>
+                <input id="psw-input" type="password" placeholder="Enter Password" name="psw" required minlength="8" maxlength="12" size="15">
 
                 <label for="confpsw-input"><b>Confirm Password</b></label>
                 <input id="confpsw-input" type="password" placeholder="Confirm Password" name="psw" required minlength="8" maxlength="12" size="15">
@@ -188,10 +160,11 @@
                 <label for="upsw-input"><b>Password</b></label>
                 <input id="upsw-input" type="password" placeholder="Enter Password" name="upsw" required minlength="8" maxlength="12" size="15">
 
-                <button id="sign-on" type="submit">Login</button>
+                <button id="sign-in" type="submit">Login</button>
                 <label>
                     <input class="remember-me" type="checkbox" checked="checked" name="remember"> Remember me
                 </label>
+                <label for="message" id="lblmessage1" style="color:#f1f1f1"></label>
             </div>
 
             <div class="container" style="background-color:#f1f1f1">
