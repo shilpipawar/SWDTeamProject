@@ -80,15 +80,15 @@ $(document).ready(function () {
             snapshot.forEach(function (childSnapshot) {
                 var childData = childSnapshot.val();
                 if (loginid == childData.UserName) {
-                     var userPsw = MD5(loginpassword);
+                    var userPsw = MD5(loginpassword);
                     if (userPsw == childData.Password) {
-                        window.location = "login.html"
+                        window.location = "index2.html"
                     }
                     else {
                         $("#lblmessage1").text("User Login/Password not match!!Try again");
                     }
                 } else {
-                    console.log("ChildData" + childData.Password + loginid + loginpassword);
+                    console.log("ChildData" + childData.Password + loginid + loginpassword);//for test
                     $("#lblmessage1").text("User Login/Password not match!!Try again");
                 }
             });
@@ -111,12 +111,15 @@ $(document).ready(function () {
         }).done(function (response) {
             var result = response.results;
             console.log(result);
-            var img
+            var img;
             for (var i = 0; i < result.lists.length; i++) {
                 timesimageArr[i] = result.lists[i].list_image;
                 console.log(timesimageArr[i]);
-            }
 
+                $('.carousel-inner').append('<div class="maybe"> </div>');
+                $('.maybe').append($('<div class="carousel-item item "><img class="d-block w-100 img-fluid" src=' + result.lists[i].list_image + '></div>'));
+                console.log(timesimageArr[i]);
+            }
         }).fail(function () {
             console.log("error");
             $('.results').html('This feature is not working. :-(');
