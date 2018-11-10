@@ -25,7 +25,7 @@
 
     <script src="assets/javascript/book.js" type="text/javascript"> </script>
 
-    <script src="assets/javascript/list.js" type="text/javascript"> </script>
+    <!-- <script src="assets/javascript/list.js" type="text/javascript"> </script> -->
 
     <title>The Shelf</title>
 </head>
@@ -46,7 +46,7 @@
                 <li class="nav-item active">
                     <!-- login button -->
                     <a id="log-in" class="nav-link" onclick="document.getElementById('id01').style.display='block'"
-                        style="width:auto;">Sign Out <span class="sr-only">(current)</span></a>
+                        style="width:auto;color: white">Sign Out <span class="sr-only">(current)</span></a>
                 </li>
                
                 <li class="nav-item dropdown">
@@ -71,7 +71,7 @@
                     <li class="nav-item active">
                             <!-- login button -->
                             <a id="log-in" 
-                                style="width:auto;">Sign Out <span class="sr-only">(current)</span></a>
+                                style="width:auto;">Sign Out <span class="sr-only" style="color:white">(current)</span></a>
                         </li>
                        
                 <input id="formId" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -112,9 +112,8 @@
                         <th scope="col">Cover</th>
                         <th scope="col">Title</th>
                         <th scope="col">Author</th>
-                        <th scope="col">Google $</th>
-                        <th scope="col">Select</th>
-
+                        <th scope="col">Buy</th>
+                        <!-- <th scope="col">Select</th> -->
                     </tr>
                 </thead>
                 <tbody id="tBody">
@@ -128,7 +127,7 @@
     </div>
 
     <!--Sign-Up -->
-    <div id="id02" class="modal">
+    <!-- <div id="id02" class="modal">
         <form class="modal-content animate" action="/action_page.php">
             <div class="imgcontainer">
                 <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
@@ -156,10 +155,10 @@
                 <span class="psw">Forgot <a href="#">password?</a></span>
             </div>
         </form>
-    </div>
+    </div> -->
 
     <!-- login -->
-    <div id="id01" class="modal">
+    <!-- <div id="id01" class="modal">
         <form class="modal-content animate">
             <div class="imgcontainer">
                 <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
@@ -184,9 +183,9 @@
                 <span class="psw">Forgot <a href="#">password?</a></span>
             </div>
         </form>
-    </div>
+    </div> -->
 
-    <footer>copyright&copy;</footer>
+    <!-- <footer>copyright&copy;</footer> -->
 </body>
 
 </html>

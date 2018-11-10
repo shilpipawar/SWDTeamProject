@@ -174,15 +174,14 @@ $(document).ready(function () {
         }).done(function (response) {
             console.log("ARR", response);
             for (var i = 0; i < response.items.length; i++) {
-
+                var bookImage = response.items[i].volumeInfo.imageLinks.smallThumbnail;
                 var bookTitle = response.items[i].volumeInfo.title;
                 var bookAuthor = response.items[i].volumeInfo.authors;
-                var bookImage = response.items[i].volumeInfo.imageLinks.smallThumbnail;
                 var bookBuy = response.items[i].saleInfo.buyLink;
 
+                console.log(bookImage);
                 console.log(bookTitle);
                 console.log(bookAuthor);
-                console.log(bookImage);
                 console.log(bookBuy);
                 printOut();
             };
@@ -192,10 +191,10 @@ $(document).ready(function () {
                 // $("#tBody").empty();
                 var tRow = $("<tr>");
                 var Rowcount = $("<th>");
-
+                var image = $("<td> <img src='" + bookImage + "'></td>");
                 var title = $("<td>").text(bookTitle);
                 var author = $("<td>").text(bookAuthor);
-                var image = $("<td> <img src='" + bookImage + "'></td>");
+                
                 var buy;
 
                 if (bookBuy != undefined) {
@@ -205,9 +204,9 @@ $(document).ready(function () {
                     buy = $("<td></td>");
                 };
                 tRow
+                    .append(image)
                     .append(title)
                     .append(author)
-                    .append(image)
                     .append(buy)
                 $("#tBody").append(tRow);
             }
