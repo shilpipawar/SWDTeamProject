@@ -22,7 +22,9 @@ $(document).ready(function () {
     var loginid;
     var loginpassword;
     var timesimageArr = [];
-    var isValidated = false;
+    // var isValidated = false;
+    var userChoice = {};
+
     ////On Click Submit Button//////////////////////////////////////////////
     $("#sign-on").on("click", function (event) {
         event.preventDefault();
@@ -103,7 +105,7 @@ $(document).ready(function () {
         return url;
     }
 
-    function NewyorkBookSaller(bookcover) {
+    function NewyorkBookSaller() {
         var queryURL = CreateQUeryURLTimes();
         $.ajax({
             url: queryURL,
@@ -155,7 +157,7 @@ $(document).ready(function () {
         $("#confpsw-input").empty();
     }
 
-    //Search COde////
+    //Search Code////
     $("#searchButton").on("click", function (event) {
 
         event.preventDefault();
@@ -183,14 +185,14 @@ $(document).ready(function () {
                 console.log(bookTitle);
                 console.log(bookAuthor);
                 console.log(bookBuy);
-                printOut();
+                var rowid = parseInt(i) + 1;
+                printOut(rowid);
             };
             //make for loop for authors after variables 
-            function printOut() {
-
+            function printOut(counter) {
                 // $("#tBody").empty();
                 var tRow = $("<tr>");
-                var Rowcount = $("<th>");
+                var Rowcount = $("<th>" + counter + "</td>");
                 var image = $("<td> <img src='" + bookImage + "'></td>");
                 var title = $("<td>").text(bookTitle);
                 var author = $("<td>").text(bookAuthor);
@@ -198,17 +200,41 @@ $(document).ready(function () {
                 var buy;
 
                 if (bookBuy != undefined) {
-                    buy = $("<td> <button><a href='" + bookBuy + "'>Buy</a></button></td>");
+                    buy = $("<td> <a href='" + bookBuy + "'>Buy</a></td>");
                     // <button class="btn btn-primary" onclick="window.location.href='/page2'">Continue</button>
                 } else {
                     buy = $("<td></td>");
                 };
+                //Add Checkbox
+                // var checkBox2 = ('<input type="checkbox" name="myCheckbox" />');
+
+                var checkBox1 = $('<label>');
+                checkBox1.addClass('containerchk');
+                checkBox1.append('<input type="checkbox">');
+                checkBox1.attr("id", counter);
+                checkBox1.append('<span class="checkmark"></span>');
+
                 tRow
+                    .append(Rowcount)
                     .append(image)
                     .append(title)
                     .append(author)
                     .append(buy)
+                    .append(checkBox1);
+                    tRow.attr("id", "Row" + counter);
+
                 $("#tBody").append(tRow);
+
+                  /**Function for checkbox */
+                  $('input[type="checkbox"]').click(function () {
+                    if ($(this).is(":checked")) {
+
+                    }
+                    else if ($(this).is(":not(:checked)")) {
+                        console.log("Check Box Unchecked");
+                    }
+                });
+                // checkBox clicked
             }
             // printOut();
         });
@@ -418,5 +444,11 @@ $(document).ready(function () {
 
         return temp.toLowerCase();
     }
+    /********************************************************************* */
+    /**************************ADD TO USER choice list to table****************** */
+    $("#selectBtn").on("click", function (event) {
+        event.preventDefault();
+
+    });//End of user selection 
     /********************************************************************* */
 })
