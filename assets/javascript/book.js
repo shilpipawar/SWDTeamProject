@@ -194,7 +194,7 @@ $(document).ready(function () {
                 var image = $("<td> <img src='" + bookImage + "'></td>");
                 var title = $("<td>").text(bookTitle);
                 var author = $("<td>").text(bookAuthor);
-                
+
                 var buy;
 
                 if (bookBuy != undefined) {
