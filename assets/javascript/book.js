@@ -23,7 +23,7 @@ $(document).ready(function () {
     var loginpassword;
     var timesimageArr = [];
     // var isValidated = false;
-    var userChoice = {};
+    var userChoice = [];
 
     ////On Click Submit Button//////////////////////////////////////////////
     $("#sign-on").on("click", function (event) {
@@ -196,7 +196,6 @@ $(document).ready(function () {
                 var image = $("<td> <img src='" + bookImage + "'></td>");
                 var title = $("<td>").text(bookTitle);
                 var author = $("<td>").text(bookAuthor);
-
                 var buy;
 
                 if (bookBuy != undefined) {
@@ -228,7 +227,8 @@ $(document).ready(function () {
                   /**Function for checkbox */
                   $('input[type="checkbox"]').click(function () {
                     if ($(this).is(":checked")) {
-
+                        var tempid = $("tr");
+                        console.log(tempid); 
                     }
                     else if ($(this).is(":not(:checked)")) {
                         console.log("Check Box Unchecked");
